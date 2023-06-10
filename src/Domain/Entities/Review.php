@@ -8,15 +8,17 @@ use App\Domain\ValueObjects\Rating;
 class Review
 {
     private int $id;
+
     private Rating $rating;
+
     private Comment $comment;
+
     private int $user_id;
+
     private int $reviewable_id;
+
     private string $reviewable_type;
 
-
-    /**
-     */
     public function __construct()
     {
         $this->rating = new Rating(0);
@@ -26,19 +28,11 @@ class Review
         $this->reviewable_type = null;
     }
 
-    /**
-     * @param Rating $param
-     * @return void
-     */
     public function setRating(Rating $param): void
     {
         $this->rating = $param;
     }
 
-    /**
-     * @param Comment $param
-     * @return void
-     */
     public function setComment(Comment $param): void
     {
         $this->comment = $param;
@@ -90,17 +84,11 @@ class Review
         $this->reviewable_type = $reviewable_type;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
     public function setId(int $id): void
     {
         $this->id = $id;

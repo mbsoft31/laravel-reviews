@@ -13,7 +13,6 @@ use Mbsoft31\LaravelReviews\Models\Review;
  */
 trait HasReview
 {
-
     /**
      * get model id
      */

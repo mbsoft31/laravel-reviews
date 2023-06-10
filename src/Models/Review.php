@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * @method static create(array $array)
  * @method static where(string $string, int $getUserId)
  * @method static find(int $getId)
+ *
  * @property int|mixed $rating
  * @property mixed|string $comment
  * @property mixed|string $reviewable_type
@@ -43,7 +43,7 @@ class Review extends Model
         $reviewModel->user_id = $review->getUserId();
         $reviewModel->reviewable_id = $review->getReviewableId();
         $reviewModel->reviewable_type = $review->getReviewableType();
+
         return $reviewModel;
     }
-
 }

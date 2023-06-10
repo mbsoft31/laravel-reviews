@@ -11,7 +11,7 @@ class ReviewFactory
     /**
      * Create a Review object from an array of data
      *
-     * @param array $data - data to create a review
+     * @param  array  $data - data to create a review
      * @return Review - created review
      */
     public static function createFromArray(array $data): Review

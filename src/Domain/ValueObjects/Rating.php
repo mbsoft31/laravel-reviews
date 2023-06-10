@@ -6,7 +6,6 @@ class Rating
 {
     /**
      * Rating
-     * @var int $rating
      */
     private int $rating;
 
@@ -24,7 +23,6 @@ class Rating
 
     /**
      * Get rating value
-     * @return int
      */
     public function getValue(): int
     {

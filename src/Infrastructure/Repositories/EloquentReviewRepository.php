@@ -10,11 +10,8 @@ use Mbsoft31\LaravelReviews\Models\Review as ReviewModel;
 
 class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepository
 {
-
     /**
      * Save a review
-     * @param Review $review
-     * @return Review
      */
     public function save(Review $review): Review
     {
@@ -28,18 +25,17 @@ class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepositor
                 'reviewable_id' => $review->getReviewableId(),
                 'reviewable_type' => $review->getReviewableType(),
             ]);
-        }else {
+        } else {
             $reviewModel = ReviewModel::fromRatingEntity($review);
             $reviewModel->save();
             $review->setId($reviewModel->id);
         }
+
         return $review;
     }
 
     /**
      * Delete a review
-     * @param Review $review
-     * @return bool
      */
     public function delete(Review $review): bool
     {
@@ -47,6 +43,7 @@ class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepositor
 
         if ($reviewModel) {
             $reviewModel->delete();
+
             return true;
         }
 
@@ -55,8 +52,6 @@ class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepositor
 
     /**
      * Find a review by id
-     * @param int $reviewId
-     * @return Review|null
      */
     public function find(int $reviewId): ?Review
     {
@@ -64,7 +59,7 @@ class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepositor
             ReviewModel::where('id', $reviewId)
                 ->first();
 
-        if (!$review) {
+        if (! $review) {
             //throw new \Exception('Review not found');
             return null;
         }
@@ -88,8 +83,8 @@ class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepositor
     {
         $reviewModels =
             ReviewModel::where('reviewable_id', $reviewableId)
-            ->where('reviewable_type', $reviewableType)
-            ->get();
+                ->where('reviewable_type', $reviewableType)
+                ->get();
 
         return $reviewModels->map(function ($review) {
             return ReviewFactory::createFromArray($review->toArray());

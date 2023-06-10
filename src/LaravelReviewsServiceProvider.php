@@ -5,15 +5,14 @@ namespace Mbsoft31\LaravelReviews;
 use App\Domain\Repositories\ReviewRepository;
 use App\Domain\Services\ReviewService;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Mbsoft31\LaravelReviews\Commands\LaravelReviewsCommand;
 use Mbsoft31\LaravelReviews\Infrastructure\Repositories\EloquentReviewRepository;
 use Spatie\LaravelPackageTools\Exceptions\InvalidPackage;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mbsoft31\LaravelReviews\Commands\LaravelReviewsCommand;
 
 class LaravelReviewsServiceProvider extends PackageServiceProvider
 {
-
     /**
      * @throws InvalidPackage
      * @throws BindingResolutionException
