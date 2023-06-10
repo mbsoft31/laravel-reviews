@@ -27,7 +27,7 @@ class Comment
      * Get comment
      * @return string
      */
-    public function getComment(): string
+    public function getValue(): string
     {
         return $this->comment;
     }

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Facade;
  */
 class LaravelReviews extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return \Mbsoft31\LaravelReviews\LaravelReviews::class;
+        return 'laravel-reviews';
     }
 }

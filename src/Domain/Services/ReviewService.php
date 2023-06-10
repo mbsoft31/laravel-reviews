@@ -64,4 +64,9 @@ class ReviewService
         $review = $this->reviewRepository->find($reviewId);
         $this->reviewRepository->delete($review);
     }
+
+    public function getAllReviews()
+    {
+        return $this->reviewRepository->getAll();
+    }
 }

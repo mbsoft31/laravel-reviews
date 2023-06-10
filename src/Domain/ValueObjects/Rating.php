@@ -23,10 +23,10 @@ class Rating
     }
 
     /**
-     * Get rating
+     * Get rating value
      * @return int
      */
-    public function getRating(): int
+    public function getValue(): int
     {
         return $this->rating;
     }

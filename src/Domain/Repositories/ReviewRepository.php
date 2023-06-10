@@ -17,12 +17,18 @@ interface ReviewRepository
      * Delete a review
      * @param Review $review
      */
-    public function delete(Review $review): void;
+    public function delete(Review $review): bool;
 
     /**
      * Find a review by id
      * @param int $reviewId
-     * @return Review
+     * @return Review|null
      */
-    public function find(int $reviewId): Review;
+    public function find(int $reviewId): ?Review;
+
+    public function getAll();
+
+    public function getReviewByReviewableIdAndReviewableType($reviewableId, $reviewableType);
+
+    public function getReviewByUserId($userId);
 }
