@@ -10,8 +10,6 @@ it('can test', function () {
 
 it(/**
  * @throws Exception
- */ /**
- * @throws Exception
  */ 'creates a review', function () {
     // Mock the ReviewRepository
     $repository = Mockery::mock(ReviewRepository::class);
