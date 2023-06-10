@@ -7,11 +7,8 @@ use App\Domain\Repositories\ReviewRepository;
 
 class EloquentReviewRepository implements ReviewRepository
 {
-
     /**
      * Save a review
-     * @param Review $review
-     * @return Review
      */
     public function save(Review $review): Review
     {
@@ -22,7 +19,6 @@ class EloquentReviewRepository implements ReviewRepository
 
     /**
      * Delete a review
-     * @param Review $review
      */
     public function delete(Review $review): void
     {
@@ -31,8 +27,6 @@ class EloquentReviewRepository implements ReviewRepository
 
     /**
      * Find a review by id
-     * @param int $reviewId
-     * @return Review
      */
     public function find(int $reviewId): Review
     {

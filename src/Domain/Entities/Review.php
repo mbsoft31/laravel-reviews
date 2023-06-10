@@ -10,5 +10,4 @@ namespace App\Domain\Entities;
  */
 class Review
 {
-
 }

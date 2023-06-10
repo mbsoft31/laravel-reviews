@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Support\Facades\Auth;
 
 class Review extends Model
 {
@@ -23,5 +22,4 @@ class Review extends Model
     {
         return $this->belongsTo(config('reviews.user_model'));
     }
-
 }

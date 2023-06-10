@@ -2,9 +2,9 @@
 
 namespace Mbsoft31\LaravelReviews;
 
+use Mbsoft31\LaravelReviews\Commands\LaravelReviewsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mbsoft31\LaravelReviews\Commands\LaravelReviewsCommand;
 
 class LaravelReviewsServiceProvider extends PackageServiceProvider
 {
