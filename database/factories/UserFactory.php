@@ -7,7 +7,6 @@ use Mbsoft31\LaravelReviews\Models\User;
 
 class UserFactory extends Factory
 {
-
     protected $model = User::class;
 
     public function definition(): array

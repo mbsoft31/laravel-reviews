@@ -8,8 +8,8 @@ use Mbsoft31\LaravelReviews\Models\Review;
 
 /**
  * Trait HasReview
+ *
  * @mixin Model
- * @package Mbsoft31\LaravelReviews\Traits
  */
 trait HasReview
 {
@@ -17,5 +17,4 @@ trait HasReview
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
-
 }

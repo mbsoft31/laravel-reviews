@@ -11,13 +11,13 @@ class ReviewService
 {
     /**
      * Review repository instance to perform database operations
-     * @var ReviewRepository $reviewRepository
      */
     private ReviewRepository $reviewRepository;
 
     /**
      * ReviewService constructor.
-     * @param ReviewRepository $reviewRepository - review repository instance
+     *
+     * @param  ReviewRepository  $reviewRepository - review repository instance
      */
     public function __construct(ReviewRepository $reviewRepository)
     {
@@ -26,7 +26,8 @@ class ReviewService
 
     /**
      * Create a review and save it to the database
-     * @param array $data - data to create a review
+     *
+     * @param  array  $data - data to create a review
      * @return Review - created review
      */
     public function createReview(array $data): Review
@@ -41,8 +42,9 @@ class ReviewService
 
     /**
      * Update a review and save it to the database
-     * @param int $reviewId - id of the review to update
-     * @param array $data - data to update a review
+     *
+     * @param  int  $reviewId - id of the review to update
+     * @param  array  $data - data to update a review
      * @return Review - updated review
      */
     public function updateReview(int $reviewId, array $data): Review
@@ -57,7 +59,8 @@ class ReviewService
 
     /**
      * Delete a review from the database
-     * @param int $reviewId - id of the review to delete
+     *
+     * @param  int  $reviewId - id of the review to delete
      */
     public function deleteReview(int $reviewId): void
     {

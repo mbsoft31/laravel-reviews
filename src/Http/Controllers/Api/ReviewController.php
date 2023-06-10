@@ -31,7 +31,6 @@ class ReviewController
     /**
      * Store a newly created review in storage.
      *
-     * @param  ReviewStoreRequest  $request
      * @return JsonResponse
      */
     public function store(ReviewStoreRequest $request)
@@ -44,7 +43,6 @@ class ReviewController
     /**
      * Display the specified review.
      *
-     * @param  int  $id
      * @return JsonResponse
      */
     public function show(int $id)
@@ -57,8 +55,6 @@ class ReviewController
     /**
      * Update the specified review in storage.
      *
-     * @param  ReviewUpdateRequest  $request
-     * @param  int  $id
      * @return JsonResponse
      */
     public function update(ReviewUpdateRequest $request, int $id)
@@ -71,7 +67,6 @@ class ReviewController
     /**
      * Remove the specified review from storage.
      *
-     * @param  int  $id
      * @return JsonResponse
      */
     public function destroy(int $id)

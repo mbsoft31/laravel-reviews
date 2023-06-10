@@ -7,5 +7,4 @@ namespace Mbsoft31\LaravelReviews\Http\Requests;
  */
 class ReviewStoreRequest
 {
-
 }

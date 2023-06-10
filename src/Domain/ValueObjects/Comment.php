@@ -6,13 +6,11 @@ class Comment
 {
     /**
      * Comment
-     * @var string
      */
     private string $comment;
 
     /**
      * Comment constructor.
-     * @param string $comment
      */
     public function __construct(string $comment)
     {
@@ -25,7 +23,6 @@ class Comment
 
     /**
      * Get comment
-     * @return string
      */
     public function getValue(): string
     {
