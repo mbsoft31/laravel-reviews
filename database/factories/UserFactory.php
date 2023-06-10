@@ -3,17 +3,17 @@
 namespace Mbsoft31\LaravelReviews\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Mbsoft31\LaravelReviews\Models\User;
 
-/*
-class ModelFactory extends Factory
+class UserFactory extends Factory
 {
-    protected $model = YourModel::class;
 
-    public function definition()
+    protected $model = User::class;
+
+    public function definition(): array
     {
         return [
 
         ];
     }
 }
-*/
