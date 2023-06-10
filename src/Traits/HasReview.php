@@ -17,4 +17,5 @@ trait HasReview
     {
         return $this->morphMany(Review::class, 'reviewable');
     }
+
 }
