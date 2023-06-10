@@ -3,10 +3,12 @@
 namespace Mbsoft31\LaravelReviews\Infrastructure\Repositories;
 
 use App\Domain\Entities\Review;
+use App\Domain\Factories\ReviewFactory;
+use App\Domain\Repositories\ReviewQueryRepository;
 use App\Domain\Repositories\ReviewRepository;
 use Mbsoft31\LaravelReviews\Models\Review as ReviewModel;
 
-class EloquentReviewRepository implements ReviewRepository
+class EloquentReviewRepository implements ReviewRepository, ReviewQueryRepository
 {
 
     /**
@@ -67,7 +69,7 @@ class EloquentReviewRepository implements ReviewRepository
             return null;
         }
 
-        return Review::fromArray($review->toArray());
+        return ReviewFactory::createFromArray($review->toArray());
     }
 
     /**
@@ -78,11 +80,11 @@ class EloquentReviewRepository implements ReviewRepository
         $allReviews = ReviewModel::all();
 
         return $allReviews->map(function ($review) {
-            return Review::fromArray($review->toArray());
+            return ReviewFactory::createFromArray($review->toArray());
         })->toArray();
     }
 
-    public function getReviewByReviewableIdAndReviewableType($reviewableId, $reviewableType)
+    public function getReviewByReviewableIdAndReviewableType($reviewableId, $reviewableType): array
     {
         $reviewModels =
             ReviewModel::where('reviewable_id', $reviewableId)
@@ -90,18 +92,18 @@ class EloquentReviewRepository implements ReviewRepository
             ->get();
 
         return $reviewModels->map(function ($review) {
-            return Review::fromArray($review->toArray());
+            return ReviewFactory::createFromArray($review->toArray());
         })->toArray();
     }
 
-    public function getReviewByUserId($userId)
+    public function getReviewByUserId($userId): array
     {
         $reviewModels =
             ReviewModel::where('user_id', $userId)
                 ->get();
 
         return $reviewModels->map(function ($review) {
-            return Review::fromArray($review->toArray());
+            return ReviewFactory::createFromArray($review->toArray());
         })->toArray();
     }
 }

@@ -25,10 +25,4 @@ interface ReviewRepository
      * @return Review|null
      */
     public function find(int $reviewId): ?Review;
-
-    public function getAll();
-
-    public function getReviewByReviewableIdAndReviewableType($reviewableId, $reviewableType);
-
-    public function getReviewByUserId($userId);
 }

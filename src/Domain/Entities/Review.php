@@ -27,28 +27,6 @@ class Review
     }
 
     /**
-     * Create a review from an array. the array should contain the following keys:
-     * - rating
-     * - comment
-     * @param array $data - data to create a review
-     * @return Review
-     */
-    public static function fromArray(array $data): Review
-    {
-        $review = new Review();
-        if (isset($data['id'])) {
-            $review->setId($data['id']);
-        }
-        $review->setRating(new Rating($data['rating']));
-        $review->setComment(new Comment($data['comment']));
-        $review->setUserId($data['user_id']);
-        $review->setReviewableId($data['reviewable_id']);
-        $review->setReviewableType($data['reviewable_type']);
-
-        return $review;
-    }
-
-    /**
      * @param Rating $param
      * @return void
      */

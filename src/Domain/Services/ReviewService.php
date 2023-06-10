@@ -6,6 +6,8 @@ use App\Domain\Entities\Review;
 use App\Domain\Repositories\ReviewRepository;
 use App\Domain\ValueObjects\Comment;
 use App\Domain\ValueObjects\Rating;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class ReviewService
 {
@@ -27,49 +29,93 @@ class ReviewService
     /**
      * Create a review and save it to the database
      *
-     * @param  array  $data - data to create a review
+     * @param array $data - data to create a review
      * @return Review - created review
+     * @throws Exception
      */
     public function createReview(array $data): Review
     {
-        $review = new Review();
-        $review->setRating(new Rating($data['rating']));
-        $review->setComment(new Comment($data['comment']));
-        // other attributes like user_id, reviewable_id and reviewable_type should be set here as well
+        try {
+            $review = new Review();
+            $review->setRating(new Rating($data['rating']));
+            $review->setComment(new Comment($data['comment']));
+            // Set other attributes
 
-        return $this->reviewRepository->save($review);
+            return $this->reviewRepository->save($review);
+        } catch (\Exception $e) {
+            // Log the error
+            Log::error($e->getMessage());
+            // Provide a user-friendly error message
+            // Take necessary fallback actions
+            throw $e; // Rethrow the exception or handle it accordingly
+        }
     }
 
     /**
      * Update a review and save it to the database
      *
-     * @param  int  $reviewId - id of the review to update
-     * @param  array  $data - data to update a review
+     * @param int $reviewId - id of the review to update
+     * @param array $data - data to update a review
      * @return Review - updated review
+     * @throws Exception
      */
     public function updateReview(int $reviewId, array $data): Review
     {
-        $review = $this->reviewRepository->find($reviewId);
-        $review->setRating(new Rating($data['rating']));
-        $review->setComment(new Comment($data['comment']));
-        // other attributes like user_id, reviewable_id and reviewable_type should be set here as well if they need to be updated
+        try {
+            $review = $this->reviewRepository->find($reviewId);
+            if ($review === null) {
+                throw new \Exception('Review not found');
+            }
+            $review->setRating(new Rating($data['rating']));
+            $review->setComment(new Comment($data['comment']));
+            // Update other attributes
 
-        return $this->reviewRepository->save($review);
+            return $this->reviewRepository->save($review);
+        } catch (\Exception $e) {
+            // Log the error
+            Log::error($e->getMessage());
+            // Provide a user-friendly error message
+            // Take necessary fallback actions
+            throw $e; // Rethrow the exception or handle it accordingly
+        }
     }
 
     /**
      * Delete a review from the database
      *
-     * @param  int  $reviewId - id of the review to delete
+     * @param int $reviewId - id of the review to delete
+     * @throws Exception
      */
     public function deleteReview(int $reviewId): void
     {
-        $review = $this->reviewRepository->find($reviewId);
-        $this->reviewRepository->delete($review);
+        try {
+            $review = $this->reviewRepository->find($reviewId);
+            if ($review === null) {
+                throw new \Exception('Review not found');
+            }
+            $this->reviewRepository->delete($review);
+        } catch (\Exception $e) {
+            // Log the error
+            Log::error($e->getMessage());
+            // Provide a user-friendly error message
+            // Take necessary fallback actions
+            throw $e; // Rethrow the exception or handle it accordingly
+        }
     }
 
-    public function getAllReviews()
+    /**
+     * @throws Exception
+     */
+    public function getAllReviews(): array
     {
-        return $this->reviewRepository->getAll();
+        try {
+            return $this->reviewRepository->getAll();
+        } catch (Exception $e) {
+            // Log the error
+            Log::error($e->getMessage());
+            // Provide a user-friendly error message
+            // Take necessary fallback actions
+            throw $e; // Rethrow the exception or handle it accordingly
+        }
     }
 }

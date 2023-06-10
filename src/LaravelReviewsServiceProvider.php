@@ -3,6 +3,8 @@
 namespace Mbsoft31\LaravelReviews;
 
 use App\Domain\Repositories\ReviewRepository;
+use App\Domain\Services\ReviewService;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Mbsoft31\LaravelReviews\Infrastructure\Repositories\EloquentReviewRepository;
 use Spatie\LaravelPackageTools\Exceptions\InvalidPackage;
 use Spatie\LaravelPackageTools\Package;
@@ -14,6 +16,7 @@ class LaravelReviewsServiceProvider extends PackageServiceProvider
 
     /**
      * @throws InvalidPackage
+     * @throws BindingResolutionException
      */
     public function register()
     {
@@ -22,6 +25,10 @@ class LaravelReviewsServiceProvider extends PackageServiceProvider
         });
 
         $this->app->bind(ReviewRepository::class, EloquentReviewRepository::class);
+
+        $this->app->instance(ReviewService::class, new ReviewService(
+            $this->app->make(ReviewRepository::class)
+        ));
 
         return parent::register();
     }

@@ -13,6 +13,26 @@ use Mbsoft31\LaravelReviews\Models\Review;
  */
 trait HasReview
 {
+
+    /**
+     * get model id
+     */
+    public function getReviewableId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * get model type
+     */
+    public function getReviewableType(): string
+    {
+        return get_class($this);
+    }
+
+    /**
+     * get model reviews
+     */
     public function reviews(): MorphMany
     {
         return $this->morphMany(Review::class, 'reviewable');
